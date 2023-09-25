@@ -45,6 +45,7 @@ public class QueryMethods
     )
     {
         var businesses = await db.Businesses
+            .AsNoTracking() // https://learn.microsoft.com/en-us/ef/core/querying/related-data/eager#filtered-include
             .Include(b => b.Rolodex)
             .ThenInclude(r => r.Clients.Where(c => clientLastNames.Contains(c.LastName)))
             .ToArrayAsync();
