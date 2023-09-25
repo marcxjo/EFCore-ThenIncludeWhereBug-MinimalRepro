@@ -95,8 +95,7 @@ public class When_using_in_memory_provider_to_query_Business_Data : IDisposable
     public async Task The_expected_dto_is_returned_when_not_filtering_clients()
     {
         var dto = await QueryMethods.GetBusinesses(
-            _db,
-            Array.Empty<string>()
+            _db
         );
 
         dto.Single().ShouldCompare(
